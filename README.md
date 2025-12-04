@@ -28,13 +28,20 @@ The main goal of this project is to demystify the "black box" of popular ML algo
     * Minimizes **Log Loss** (Binary Cross-Entropy).
     * Implements **Gradient Descent** solver for binary classification tasks.
 
-### 2. Preprocessing
+### 2. Instance-Based Models 
+* **K-Nearest Neighbors (KNeighborsClassifier)**:
+    * **Lazy Learning**: The model memorizes the training data rather than explicitly learning parameters.
+    * **Mechanism**: Classification is determined by a majority vote among the K nearest data points in the feature space.
+    * **Distance Metrics**: Supports Minkowski, Euclidean, and Manhattan distance calculations.
+    * **Weighting**: Allows prediction by **uniform** voting or **distance-weighted** voting (closer neighbors have more influence).
+
+### 3. Preprocessing
 Algorithms for feature scaling to improve model convergence:
 * **StandardScaler**: Standardizes features by removing the mean and scaling to unit variance.
 * **MinMaxScaler**: Transforms features by scaling each feature to a given range (e.g., 0 to 1).
 * **RobustScaler**: Scales features using statistics that are robust to outliers (Median and IQR).
 
-### 3. Evaluation Metrics
+### 4. Evaluation Metrics
 Set of regression metrics:
 * **MSE** (Mean Squared Error)
 * **RMSE** (Root Mean Squared Error)
@@ -51,7 +58,7 @@ Set of classification metrics
 * **Specificity Score**
 * **F1 Score**
 
-### 4. Model Selection 
+### 5. Model Selection 
 * **train_test_split**:
     * Splits data into training and test sets, with optional shuffling and stratification to preserve class distribution.
     * Supports `test_size`, `random_state`, `shuffle`, and `stratify`.
