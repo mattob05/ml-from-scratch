@@ -22,6 +22,11 @@ The main goal of this project is to demystify the "black box" of popular ML algo
     * Adds a penalty equal to the **absolute value** of the magnitude of coefficients.
     * Performs automatic **Feature Selection** by driving irrelevant feature weights to exactly zero.
     * Uses **Gradient Descent** with sub-gradient optimization.
+* **Logistic Regression**:
+    * **Logistic Regression (Binary Classification)**:
+    * Predicts probabilities using the **Sigmoid** activation function.
+    * Minimizes **Log Loss** (Binary Cross-Entropy).
+    * Implements **Gradient Descent** solver for binary classification tasks.
 
 ### 2. Preprocessing
 Algorithms for feature scaling to improve model convergence:
@@ -37,3 +42,11 @@ Set of regression metrics:
 * **RAE** (Relative Absolute Error)
 * **RSE** (Relative Squared Error)
 * **R2 Score** (Coefficient of Determination)
+
+Set of classification metrics
+* **Confusion Matrix**
+* **Accuracy Score**
+* **Precision Score**
+* **Recall Score**
+* **Specificity Score**
+* **F1 Score**

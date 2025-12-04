@@ -7,3 +7,12 @@ from .regression import (
     relative_squared_error,
     r2_score
 )
+
+from .classification import (
+    accuracy_score,
+    confusion_matrix,
+    precision_score,
+    recall_score,
+    specificity_score,
+    f1_score
+)
