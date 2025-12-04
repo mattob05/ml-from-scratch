@@ -14,6 +14,14 @@ The main goal of this project is to demystify the "black box" of popular ML algo
 * **Linear Regression**:
     * **Gradient Descent Solver**: Iterative optimization with configurable learning rate and epochs.
     * **OLS Solver (Normal Equation)**: Analytical solution using linear system solving (more stable than explicit matrix inversion).
+* **Ridge Regression (L2 Regularization)**:
+    * Adds a penalty equal to the **square** of the magnitude of coefficients.
+    * Prevents overfitting by shrinking weights towards zero (but not exactly zero).
+    * Supports both **Gradient Descent** and **Analytical OLS** solvers.
+* **Lasso Regression (L1 Regularization)**:
+    * Adds a penalty equal to the **absolute value** of the magnitude of coefficients.
+    * Performs automatic **Feature Selection** by driving irrelevant feature weights to exactly zero.
+    * Uses **Gradient Descent** with sub-gradient optimization.
 
 ### 2. Preprocessing
 Algorithms for feature scaling to improve model convergence:
