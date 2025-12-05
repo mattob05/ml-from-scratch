@@ -29,9 +29,9 @@ The main goal of this project is to demystify the "black box" of popular ML algo
     * Implements **Gradient Descent** solver for binary classification tasks.
 
 ### 2. Instance-Based Models 
-* **K-Nearest Neighbors (KNeighborsClassifier)**:
+* **K-Nearest Neighbors (KNeighborsClassifier, KNeighborsRegressor)**:
     * **Lazy Learning**: The model memorizes the training data rather than explicitly learning parameters.
-    * **Mechanism**: Classification is determined by a majority vote among the K nearest data points in the feature space.
+    * **Mechanism**: Classification is determined by a **majority vote** among the K nearest data points in the feature space, while Regression by a **weighted mean**.
     * **Distance Metrics**: Supports Minkowski, Euclidean, and Manhattan distance calculations.
     * **Weighting**: Allows prediction by **uniform** voting or **distance-weighted** voting (closer neighbors have more influence).
 

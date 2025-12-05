@@ -1,6 +1,6 @@
 import numpy as np
 
-class KNeighborsClassifier:
+class KNeighborsRegressor:
     def __init__(self, n_neighbors=5, weights='uniform', p=2, metric='minkowski'):
         self.neighbors = n_neighbors
         self.weights = weights
@@ -26,33 +26,16 @@ class KNeighborsClassifier:
         closest = np.argpartition(distances, self.neighbors, axis=1)[:, :self.neighbors]
         dist_clos = distances[np.arange(distances.shape[0])[:, None], closest]
         lab_clos = self.labels[closest]
-        pred = []
         
-        for i in range(X.shape[0]):
-            d = dist_clos[i]
-            lab = lab_clos[i]
-            # to avoid dividing by zero
-            if_zero = np.where(d == 0)[0]
-            if len(if_zero) > 0:
-                pred.append(lab[if_zero[0]])
-                continue
+        if self.weights == 'distance':
+            w = 1 / (dist_clos + 1e-12) #adding epsilon to avoid division by zero
+        else:
+            w = np.ones_like(dist_clos)
 
-            if self.weights == 'distance':
-                w = 1 / d
-            else:
-                w = np.ones_like(d)
+        weighted_sum = np.sum(lab_clos * w, axis=1)
+        total_weight = np.sum(w, axis=1)
 
-            classes = np.unique(lab)
-            scores = {c: 0 for c in classes}
-
-            for weight, lbl in zip(w, lab):
-                scores[lbl] += weight
-
-            best_class = max(scores, key=scores.get)
-            pred.append(best_class)
-
-        return np.array(pred)
-
+        return np.divide(weighted_sum, total_weight, out=np.zeros_like(weighted_sum), where=total_weight!=0)
 
         
 
