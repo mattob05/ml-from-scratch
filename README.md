@@ -61,5 +61,3 @@ Set of classification metrics
 ### 5. Model Selection 
 * **train_test_split**:
     * Splits data into training and test sets, with optional shuffling and stratification to preserve class distribution.
-    * Supports `test_size`, `random_state`, `shuffle`, and `stratify`.
-    * Returns NumPy arrays: `X_train, X_test, y_train, y_test`
