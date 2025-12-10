@@ -1,4 +1,5 @@
 import numpy as np
+from metrics import accuracy_score
 
 class KNeighborsClassifier:
     def __init__(self, n_neighbors=5, weights='uniform', p=2, metric='minkowski'):
@@ -12,6 +13,8 @@ class KNeighborsClassifier:
     def fit(self, X, y):
         self.points = X
         self.labels = y
+
+        return self
 
     def predict(self, X):
         X_brod = X[:, np.newaxis, :]
@@ -52,6 +55,10 @@ class KNeighborsClassifier:
             pred.append(best_class)
 
         return np.array(pred)
+    
+    def score(self, X, y):
+        y_pred = self.predict(X)
+        return accuracy_score(y, y_pred)
 
 
         

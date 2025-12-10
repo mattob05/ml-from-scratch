@@ -1,4 +1,6 @@
 import numpy as np
+from metrics import r2_score
+
 
 class KNeighborsRegressor:
     def __init__(self, n_neighbors=5, weights='uniform', p=2, metric='minkowski'):
@@ -12,6 +14,8 @@ class KNeighborsRegressor:
     def fit(self, X, y):
         self.points = X
         self.labels = y
+
+        return self
 
     def predict(self, X):
         X_brod = X[:, np.newaxis, :]
@@ -37,6 +41,9 @@ class KNeighborsRegressor:
 
         return np.divide(weighted_sum, total_weight, out=np.zeros_like(weighted_sum), where=total_weight!=0)
 
+    def score(self, X, y):
+        y_pred = self.predict(X)
+        return r2_score(y, y_pred)
         
 
 

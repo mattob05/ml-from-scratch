@@ -1,4 +1,5 @@
 import numpy as np
+from metrics import accuracy_score
 
 class LogisticRegression:
     def __init__(self, learning_rate=0.01, n_iterations=1000):
@@ -36,3 +37,7 @@ class LogisticRegression:
     def predict_proba(self, X):
         linear = np.dot(X, self.coef) + self.intercept
         return self.sigmoid(linear)
+    
+    def score(self, X, y):
+        y_pred = self.predict(X)
+        return accuracy_score(y, y_pred)

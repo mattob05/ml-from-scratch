@@ -1,4 +1,5 @@
 import numpy as np
+from metrics import r2_score
 
 class LinearRegression:
     def __init__(self, method='ols', learning_rate=0.01, n_iterations=1000):
@@ -36,6 +37,10 @@ class LinearRegression:
     
     def predict(self, X):
         return np.dot(X, self.coef) + self.intercept
+    
+    def score(self, X, y):
+        y_pred = self.predict(X)
+        return r2_score(y, y_pred)
 
 
 class RidgeRegression:
@@ -75,6 +80,10 @@ class RidgeRegression:
     def predict(self, X):
         return np.dot(X, self.coef) + self.intercept
     
+    def score(self, X, y):
+        y_pred = self.predict(X)
+        return r2_score(y, y_pred)
+    
 
 class LassoRegression():
     def __init__(self, alpha=1, learning_rate=0.01, n_iterations=1000):
@@ -101,3 +110,7 @@ class LassoRegression():
     
     def predict(self, X):
         return np.dot(X, self.coef) + self.intercept
+    
+    def score(self, X, y):
+        y_pred = self.predict(X)
+        return r2_score(y, y_pred)

@@ -61,5 +61,9 @@ Set of classification metrics
 ### 5. Model Selection 
 * **train_test_split**:
     * Splits data into training and test sets, with optional shuffling and stratification to preserve class distribution.
-    * Supports `test_size`, `random_state`, `shuffle`, and `stratify`.
-    * Returns NumPy arrays: `X_train, X_test, y_train, y_test`
+* **KFold (K-Fold Cross-Validation)**:
+    * Generates non-overlapping index splits for robust model evaluation.
+    * Ensures every data point is used exactly once in the validation set.
+* **cross_val_score**:
+    * **Orchestrator Function** that automates the process of K-fold validation.
+    * Clones the estimator (`deepcopy`) in each fold to ensure independent training runs.

@@ -46,6 +46,28 @@ def train_test_split(X, y, test_size=0.2, random_state=None, shuffle=True, strat
     return X_arr[train_indices], X_arr[test_indices], y_arr[train_indices], y_arr[test_indices]
 
 
+class KFold:
+    def __init__(self, n_splits=5, shuffle=False, random_state=None):
+        self.splits = n_splits
+        self.shuffle = shuffle
+        self.random_state = random_state
+
+    def split(self, X):
+        n_samples = X.shape[0]
+        indices = np.arange(n_samples)
+        if self.shuffle:
+            if self.random_state is not None:
+                np.random.seed(self.random_state)
+            np.random.shuffle(indices)
+        
+        fold_sizes = n_samples // self.splits
+        splitted = np.split(indices, fold_sizes)
+        for i in range(fold_sizes):
+            test_indices = splitted[i]
+            train_indices = np.concatenate(np.delete(splitted, i))
+            yield train_indices, test_indices
+        
+
 
 
 
