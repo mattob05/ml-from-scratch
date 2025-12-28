@@ -35,13 +35,20 @@ The main goal of this project is to demystify the "black box" of popular ML algo
     * **Distance Metrics**: Supports Minkowski, Euclidean, and Manhattan distance calculations.
     * **Weighting**: Allows prediction by **uniform** voting or **distance-weighted** voting (closer neighbors have more influence).
 
-### 3. Preprocessing
+### 3. Clustering Models
+* **K-Means Clustering**:
+    * **Lloyd's Algorithm**: An iterative optimization process that alternates between assigning data points to the nearest centroids and updating centroids as the arithmetic mean of assigned points.
+    * **Inertia Minimization**: Minimizes the **Within-Cluster Sum of Squares (WCSS)**, defined as $J = \sum_{i=1}^{n} \|x_i - \mu_{c_i}\|^2$.
+    * **Initialization Strategies**: Supports **Random** initialization and **K-Means++** to accelerate convergence and reduce the risk of settling into poor local optima.
+    * **Robustness & Functionality**: Features a rescue mechanism for empty clusters by reassigning centroids to outliers and supports `predict` for cluster assignment and `transform` for distance-based feature mapping.
+
+### 4. Preprocessing
 Algorithms for feature scaling to improve model convergence:
 * **StandardScaler**: Standardizes features by removing the mean and scaling to unit variance.
 * **MinMaxScaler**: Transforms features by scaling each feature to a given range (e.g., 0 to 1).
 * **RobustScaler**: Scales features using statistics that are robust to outliers (Median and IQR).
 
-### 4. Evaluation Metrics
+### 5. Evaluation Metrics
 Set of regression metrics:
 * **MSE** (Mean Squared Error)
 * **RMSE** (Root Mean Squared Error)
@@ -50,7 +57,7 @@ Set of regression metrics:
 * **RSE** (Relative Squared Error)
 * **R2 Score** (Coefficient of Determination)
 
-Set of classification metrics
+Set of classification metrics:
 * **Confusion Matrix**
 * **Accuracy Score**
 * **Precision Score**
@@ -58,7 +65,7 @@ Set of classification metrics
 * **Specificity Score**
 * **F1 Score**
 
-### 5. Model Selection 
+### 6. Model Selection 
 * **train_test_split**:
     * Splits data into training and test sets, with optional shuffling and stratification to preserve class distribution.
 * **KFold (K-Fold Cross-Validation)**:
